@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data.Entity; //inheritance of DbContext from EntityFramework
 using DBSystem.ENTITIES;
+using DBSystem.BLL;
 
 namespace DBSystem.DAL
 {
@@ -20,6 +21,10 @@ namespace DBSystem.DAL
     internal class ContextFSIS : DbContext
     {
         public ContextFSIS() : base("FSISDB") { }
+        
+        public DbSet<Team> Team { get; set; }
+        public DbSet<Player> Player { get; set; }
+        public DbSet<Guardian> Guardian { get; set; }
 
     }
     internal class ContextStarTED : DbContext
