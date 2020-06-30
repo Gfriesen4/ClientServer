@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ProgramsController.cs" />
     <Compile Include="BLL\GuardianController.cs" />
     <Compile Include="BLL\PlayerController.cs" />
+    <Compile Include="BLL\SchoolsController.cs" />
     <Compile Include="BLL\TeamController.cs" />
     <Compile Include="BLL\CategoryController.cs" />
     <Compile Include="BLL\ProductController.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="DAL\Context.cs" />
     <Compile Include="ENTITIES\Guardian.cs" />
     <Compile Include="ENTITIES\Player.cs" />
+    <Compile Include="ENTITIES\Programs.cs" />
+    <Compile Include="ENTITIES\Schools.cs" />
     <Compile Include="ENTITIES\Team.cs" />
     <Compile Include="ENTITIES\Category.cs" />
     <Compile Include="ENTITIES\Product.cs" />

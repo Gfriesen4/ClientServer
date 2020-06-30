@@ -30,6 +30,12 @@ namespace DBSystem.DAL
     internal class ContextStarTED : DbContext
     {
         public ContextStarTED() : base("StarTEDDB") { }
+        
+        public DbSet<Schools> Schools { get; set; }
+        public DbSet<Programs> Programs { get; set; }
+        
+
+
 
     }
 }
