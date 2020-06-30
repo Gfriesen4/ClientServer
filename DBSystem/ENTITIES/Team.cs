@@ -20,14 +20,6 @@ namespace DBSystem.ENTITIES
         public string AssistantCoach { get; set; }
         public int? Wins { get; set; }
         public int? Losses { get; set; }
-
-        //public string TeamWins
-        //{
-        //    get
-        //    {
-        //        string  SWins = Wins;
-        //        return TeamWins;
-        //    }
-        //}
+       
     }
 }
