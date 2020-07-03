@@ -73,14 +73,14 @@ namespace WebApp.Exercises
         {
             if (List02.SelectedIndex == 0)
             {
-                MessageLabel.Text = "Select a Product";
+                MessageLabel.Text = "Select a Program";
             }
             else
             {
                 try
                 {
-                    string productid = List02.SelectedValue;
-                    Response.Redirect("94CRUDPageNW.aspx?page=70&pid=" + productid + "&add=" + "no");
+                    string programid = List02.SelectedValue;
+                    Response.Redirect("ProjectCRUD.aspx?page=P1&pid=" + programid);
                 }
                 catch (Exception ex)
                 {

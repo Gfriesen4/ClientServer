@@ -30,5 +30,27 @@ namespace DBSystem.BLL
                 return results.ToList();
             }
         }
+        public int Update(Programs item)
+        {
+            using (var context = new ContextStarTED())
+            {
+                context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                return context.SaveChanges();
+            }
+        }
+        public int Delete(string id)
+        {
+            using (var context = new ContextStarTED())
+            {
+                var existing = context.Programs.Find(id);
+                if (existing == null)
+                {
+                    throw new Exception("Record has been removed from database");
+                }
+                context.Programs.Remove(existing);
+                return context.SaveChanges();
+            }
+        }
     }
 }
+ 
