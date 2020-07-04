@@ -51,6 +51,13 @@ namespace DBSystem.BLL
                 return context.SaveChanges();
             }
         }
+        public Programs FindByPKID(int id)
+        {
+            using (var context = new ContextStarTED())
+            {
+                return context.Programs.Find(id);
+            }
+        }
     }
 }
  

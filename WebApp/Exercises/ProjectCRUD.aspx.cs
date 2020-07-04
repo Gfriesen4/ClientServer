@@ -18,30 +18,25 @@ namespace WebApp.Exercises
     {
         static string pagenum = "";
         static string pid = "";
-        static string add = "";
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
             if (!Page.IsPostBack)
             {
                 pagenum = Request.QueryString["page"];
-                pid = Request.QueryString["pid"];                
-                BindSchoolsList();                
+                pid = Request.QueryString["pid"];
+                BindSchoolsList();
                 if (string.IsNullOrEmpty(pid))
                 {
                     Response.Redirect("~/Default.aspx");
-                }
-                else if (add == "yes")
-                {
-                    UpdateButton.Enabled = false;
-                    DeleteButton.Enabled = false;
-
-                }
+                }                
                 else
-                {                    
+                {
+                    
                     ProgramsController sysmgr = new ProgramsController();
                     Programs info = null;
-                    info = sysmgr.FindByID(pid);
+                    info = sysmgr.FindByPKID(int.Parse(pid));
                     if (info == null)
                     {
                         ShowMessage("Record is not in Database.", "alert alert-info");
@@ -49,15 +44,14 @@ namespace WebApp.Exercises
                     }
                     else
                     {
-                        ProgramID.Text = info.ProgramID.ToString(); 
+                        ProgramID.Text = info.ProgramID.ToString();
                         ProgramName.Text = info.ProgramName;
                         DiplomaName.Text = info.DiplomaName; //NULL in Database
-                        SchoolCode.SelectedValue = info.SchoolCode;  
+                        SchoolCode.SelectedValue = info.SchoolCode;
                         Tuition.Text = string.Format("{0:0.00}", info.Tuition.ToString());
-                        InternationalTuition.Text = info.Tuition.ToString();
+                        InternationalTuition.Text = string.Format("{0:0.00}", info.InternationalTuition.ToString());
 
                     }
-                    
                 }
             }
         }
@@ -97,7 +91,7 @@ namespace WebApp.Exercises
             {
                 ShowMessage(GetInnerException(ex).ToString(), "alert alert-danger");
             }
-        }        
+        }
         protected bool Validation(object sender, EventArgs e)
         {
             double tuition = 0;
@@ -106,7 +100,7 @@ namespace WebApp.Exercises
             {
                 ShowMessage("Program Name is required", "alert alert-info");
                 return false;
-            }            
+            }
             else if (SchoolCode.SelectedValue == "0")
             {
                 ShowMessage("Guardian is required", "alert alert-info");
@@ -124,7 +118,7 @@ namespace WebApp.Exercises
                     ShowMessage("Tuition must be between $0.00 and $10,000.00", "alert alert-info");
                     return false;
                 }
-            }            
+            }
             else if (double.TryParse(InternationalTuition.Text, out internationalTuition))
             {
                 if (internationalTuition < 0.00 || internationalTuition > 20000.00)
@@ -145,7 +139,7 @@ namespace WebApp.Exercises
             if (pagenum == "p1")
             {
                 Response.Redirect("Project.aspx");
-            }            
+            }
             else
             {
                 Response.Redirect("~/Default.aspx");
@@ -155,7 +149,7 @@ namespace WebApp.Exercises
         {
             ProgramID.Text = "";
             ProgramName.Text = "";
-            DiplomaName.Text = "";           
+            DiplomaName.Text = "";
             SchoolCode.ClearSelection();
             Tuition.Text = "";
             InternationalTuition.Text = "";
@@ -220,7 +214,7 @@ namespace WebApp.Exercises
                     item.ProgramID = int.Parse(ProgramID.Text);
                     item.ProgramName = ProgramName.Text.Trim();
                     item.DiplomaName = DiplomaName.Text.Trim();
-                    item.SchoolCode = SchoolCode.Text.Trim();                    
+                    item.SchoolCode = SchoolCode.Text.Trim();
                     item.Tuition = decimal.Parse(Tuition.Text);
                     item.InternationalTuition = decimal.Parse(InternationalTuition.Text);
                     int rowsaffected = sysmgr.Update(item);
@@ -258,7 +252,7 @@ namespace WebApp.Exercises
                         ShowMessage("Record was not found", "alert alert-warning");
                     }
                     UpdateButton.Enabled = false;
-                    DeleteButton.Enabled = false;                    
+                    DeleteButton.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -268,4 +262,4 @@ namespace WebApp.Exercises
         }
     }
 }
-    
+
