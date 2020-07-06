@@ -67,7 +67,8 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-8 text-left">
-            <asp:Button ID="BackButton" runat="server" Text="Back" OnClick="Back_Click" />&nbsp;            
+            <asp:Button ID="BackButton" runat="server" Text="Back" OnClick="Back_Click" />&nbsp;
+            <%--<asp:Button ID="AddButton" runat="server" OnClick="Add_Click" Text="Add"/>&nbsp;--%>
             <asp:Button ID="UpdateButton" runat="server" OnClick="Update_Click" Text="Update"/>&nbsp;
             <asp:Button ID="DeleteButton" runat="server" OnClick="Delete_Click" Text="Delete"
               OnClientClick="return CallFunction();"/>

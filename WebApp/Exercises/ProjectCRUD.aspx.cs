@@ -103,7 +103,7 @@ namespace WebApp.Exercises
             }
             else if (SchoolCode.SelectedValue == "0")
             {
-                ShowMessage("Guardian is required", "alert alert-info");
+                ShowMessage("School is required", "alert alert-info");
                 return false;
             }
             else if (string.IsNullOrEmpty(Tuition.Text))
@@ -136,7 +136,7 @@ namespace WebApp.Exercises
         }
         protected void Back_Click(object sender, EventArgs e)
         {
-            if (pagenum == "p1")
+            if (pagenum == "P1")
             {
                 Response.Redirect("Project.aspx");
             }
@@ -162,33 +162,24 @@ namespace WebApp.Exercises
         //    {
         //        try
         //        {
-        //            PlayerController sysmgr = new PlayerController();
-        //            Player item = new Player();
-        //            //No ProductID here as the database will give a new one back when we add
-        //            item.FirstName = FirstName.Text.Trim(); //NOT NULL in Database
-        //            item.FirstName = FirstName.Text.Trim();
-        //            item.LastName = LastName.Text.Trim();
-        //            item.GuardianID = int.Parse(GuardianList.SelectedValue);
-        //            item.TeamID = int.Parse(TeamList.SelectedValue);
-        //            item.Gender = Gender.Text.Trim();
-        //            item.Age = int.Parse(Age.Text);
-        //            item.AlbertaHealthCareNumber = AlbertaHealthCareNumber.Text;
-        //            item.MedicalAlertDetails = MedicalAlertDetails.Text;
-        //            //if (SupplierList.SelectedValue == "0") //NULL in Database
-        //            //{
-        //            //    item.SupplierID = null;
-        //            //}
-        //            //else
-        //            //{
-        //            //    item.SupplierID = int.Parse(SupplierList.SelectedValue);
-        //            //}
-        //            ////CategoryID can be NULL in Database but NOT NULL when record is added in this CRUD page
-        //            //item.CategoryID = int.Parse(CategoryList.SelectedValue);
-        //            ////UnitPrice can be NULL in Database but NOT NULL when record is added in this CRUD page
-        //            //item.UnitPrice = decimal.Parse(UnitPrice.Text);
-        //            //item.Discontinued = Discontinued.Checked; //NOT NULL in Database
+        //            ProgramsController sysmgr = new ProgramsController();
+        //            Programs item = new Programs();
+        //            item.ProgramID = int.Parse(ProgramID.Text);
+        //            item.ProgramName = ProgramName.Text.Trim();                    
+        //            if (DiplomaName.Text.Trim() == "0") //NULL in Database
+        //            {
+        //                item.DiplomaName = null;
+        //            }
+        //            else
+        //            {
+        //                item.DiplomaName = DiplomaName.Text.Trim();
+        //            }
+        //            item.SchoolCode = SchoolCode.Text.Trim();
+        //            item.Tuition = decimal.Parse(Tuition.Text);
+        //            item.InternationalTuition = decimal.Parse(InternationalTuition.Text);
+                    
         //            int newID = sysmgr.Add(item);
-        //            PlayerID.Text = newID.ToString();
+        //            ProgramID.Text = newID.ToString();
 
         //            ShowMessage("Program has been ADDED", "alert alert-success");
         //            AddButton.Enabled = false;
@@ -241,7 +232,7 @@ namespace WebApp.Exercises
                 try
                 {
                     ProgramsController sysmgr = new ProgramsController();
-                    int rowsaffected = sysmgr.Delete(ProgramID.Text);
+                    int rowsaffected = sysmgr.Delete(int.Parse(ProgramID.Text));
                     if (rowsaffected > 0)
                     {
                         ShowMessage("Record has been DELETED", "alert alert-success");

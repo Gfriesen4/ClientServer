@@ -38,7 +38,7 @@ namespace DBSystem.BLL
                 return context.SaveChanges();
             }
         }
-        public int Delete(string id)
+        public int Delete(int id)
         {
             using (var context = new ContextStarTED())
             {
@@ -56,6 +56,16 @@ namespace DBSystem.BLL
             using (var context = new ContextStarTED())
             {
                 return context.Programs.Find(id);
+            }
+        }
+        public int Add(Programs item)
+        {
+            using (var context = new ContextStarTED())
+            {
+                context.Programs.Add(item);
+                context.SaveChanges();
+                return item.ProgramID;
+
             }
         }
     }
